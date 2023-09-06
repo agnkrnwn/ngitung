@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Barang</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+  <style>
+    /* Penyesuaian CSS untuk tampilan responsif */
+    @media (max-width: 576px) {
+      .container {
+        padding: 10px;
+      }
+      .table {
+        font-size: 14px;
+        max-width: 100%;
+        overflow-x: auto;
+      }
+      .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+    }
+    .no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-body text-center mb-4">Daftar Barang</h2>
+    <input type="text" class="no-border mb-4 " id="namaDaftarBarang" placeholder="NAMA TASNYA" /> <i class="fas fa-pen"></i>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Harga Per lusin</th>
+            <th>Jumlah</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="barang-list">
+          <!-- Daftar barang akan ditambahkan oleh JavaScript -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="text-right">
+              <strong>Total :</strong>
+            </td>
+            <td><span id="total-semua">0</span></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="text-right"><strong>Modal:</strong></td>
+            <td><span id="hasil-pembagian">0</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="text-left mt-2">
+        <button class="btn btn-primary" onclick="tambahBarang()">
+            <i class="fas fa-plus"></i> 
+        </button>
+        
+        <button class="btn btn-success ml-2" onclick="hitungBagiDuaBelas()">
+            <i class="fas fa-calculator"></i> 
+        </button>
+        
+        <button class="btn btn-danger ml-2" onclick="resetSemua()">
+            <i class="fas fa-redo"></i> 
+        </button>
+        
+        <button class="btn btn-secondary ml-2" id="simpanPDF">
+            <i class="fas fa-file-pdf"></i> 
+        </button>
+        
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+  <script src="script.js"></script>
+  
+</body>
+</html>
