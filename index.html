@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,89 +9,143 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-title" content="Kalkulator Modal">
     <title>Kalkulator Modal</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/output.css">
     <link rel="stylesheet" href="/css/all.min.css">
-    <link rel="stylesheet" href="/css/app.css">
 </head>
-<body>
-    <div class="container my-5">
-        <h1 class="text-center mb-4">Kalkulator Modal</h1>
-        <input type="text" class="form-control mb-4" id="namaDaftarBarang" placeholder="Nama Produk">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Input Barang</h5>
-                        <div class="mb-3">
-                            <label for="namaBarang" class="form-label">Nama Barang:</label>
-                            <input type="text" id="namaBarang" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="hargaBarang" class="form-label">Harga Barang (Rp):</label>
-                            <input type="number" id="hargaBarang" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="jumlahBarang" class="form-label">Jumlah Barang:</label>
-                            <input type="number" id="jumlahBarang" class="form-control">
-                        </div>
-                        <button id="tambahBarang" class="btn btn-primary w-100"><i class="fas fa-plus"></i> Tambah</button>
+<body class="bg-base-200 min-h-screen">
+    <div class="navbar bg-base-100 shadow-lg">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl">Kalkulator Modal Modern</a>
+        </div>
+        <div class="flex-none">
+            <label class="swap swap-rotate">
+                <input type="checkbox" id="themeToggle" />
+                <svg class="swap-on fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+                <svg class="swap-off fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
+            </label>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Input Barang</h2>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Nama Produk</span>
+                        </label>
+                        <input type="text" id="namaDaftarBarang" placeholder="Nama Produk" class="input input-bordered w-full">
                     </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Nama Barang</span>
+                        </label>
+                        <input type="text" id="namaBarang" placeholder="Nama Barang" class="input input-bordered w-full">
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Harga Barang (Rp)</span>
+                        </label>
+                        <input type="number" id="hargaBarang" placeholder="Harga Barang" class="input input-bordered w-full">
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Jumlah Barang</span>
+                        </label>
+                        <input type="number" id="jumlahBarang" placeholder="Jumlah Barang" class="input input-bordered w-full">
+                    </div>
+                    <button id="tambahBarang" class="btn btn-primary mt-4">
+                        <i class="fas fa-plus mr-2"></i> Tambah Barang
+                    </button>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h5>Daftar Barang:</h5>
-                <div class="table-responsive">
-                    <table id="daftarBarang" class="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                                <td><span id="totalKeseluruhan">0</span></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="text-end"><strong>Modal:</strong></td>
-                                <td><strong><span id="hasilBagi12">0</span></strong></td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div class="d-flex justify-content-between mt-3">
-                    <button class="btn btn-success" id="bagiDua"><i class="fas fa-calculator"></i> Hitung</button>
-                    <button class="btn btn-danger" id="resetDaftar"><i class="fas fa-redo"></i> Reset</button>
-                    <button class="btn btn-primary" id="simpanPDF"><i class="fas fa-file-pdf"></i> Unduh PDF</button>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Daftar Barang</h2>
+                    <div class="overflow-x-auto">
+                        <table id="daftarBarang" class="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="stats shadow">
+                        <div class="stat">
+                            <div class="stat-title">Total Keseluruhan</div>
+                            <div class="stat-value" id="totalKeseluruhan">0</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Modal</div>
+                            <div class="stat-value" id="hasilBagi12">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions justify-beetwen mt-4">
+                        <button class="btn btn-success" id="bagiDua">
+                            <i class="fas fa-calculator mr-2"></i> Hitung
+                        </button>
+                        <button class="btn btn-error" id="resetDaftar">
+                            <i class="fas fa-redo mr-2"></i> Reset
+                        </button>
+                        <button class="btn btn-primary" id="simpanPDF">
+                            <i class="fas fa-file-pdf mr-2"></i> PDF
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="percentageModal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg mb-4">Tambah Persentase</h3>
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Masukkan persentase</span>
+                </label>
+                <input type="number" id="customPercentage" class="input input-bordered w-full" placeholder="Contoh: 10">
+            </div>
+            <div class="flex flex-wrap justify-between mt-4">
+                <button class="btn btn-outline percentage-btn m-1" data-percentage="10">10%</button>
+                <button class="btn btn-outline percentage-btn m-1" data-percentage="20">20%</button>
+                <button class="btn btn-outline percentage-btn m-1" data-percentage="30">30%</button>
+                <button class="btn btn-outline percentage-btn m-1" data-percentage="50">50%</button>
+            </div>
+            <div class="modal-action">
+                <button class="btn btn-ghost" onclick="percentageModal.hide()">Batal</button>
+                <button class="btn btn-primary" id="applyPercentage">Oke</button>
+                <button class="btn btn-success" id="continueWithoutPercentage">Lanjut Tanpa Persen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/pdfmake.min.js"></script>
+    <script src="/js/vfs_fonts.js"></script>
+    <script src="/js/app2.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
       .then(registration => {
-        console.log('Service Worker registered with scope:', registration.scope);
+        console.log('Service Worker registered with ssssssscope:', registration.scope);
       })
       .catch(error => {
         console.error('Service Worker registration failed:', error);
       });
   }
     </script>
-
-    <script src="/js/jquery-3.6.0.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/pdfmake.min.js"></script>
-    <script src="/js/vfs_fonts.js"></script>
-    <script src="/js/app.js"></script>
 </body>
 </html>
