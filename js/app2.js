@@ -89,6 +89,24 @@ $(document).ready(function () {
         }
     });
 
+    function updateDetailPerhitungan(totalAwal, persentase, totalAkhir, modal) {
+        const detailTable = $("#detailPerhitungan");
+        detailTable.empty();
+
+        const tambahan = totalAkhir - totalAwal;
+        
+        detailTable.append(`<tr><td class="font-bold">Total Keseluruhan Awal</td><td class="text-right">${formatRupiah(totalAwal)}</td></tr>`);
+        
+        if (persentase > 0) {
+            detailTable.append(`<tr><td class="font-bold">Persentase yang Diterapkan</td><td class="text-right">${persentase}%</td></tr>`);
+            detailTable.append(`<tr><td class="font-bold">Penambahan</td><td class="text-right"> + ${formatRupiah(tambahan)}</td></tr>`);
+            detailTable.append(`<tr><td class="font-bold">Total Setelah Penambahan</td><td class="text-right">${formatRupiah(totalAkhir)}</td></tr>`);
+        }
+        
+        detailTable.append(`<tr><td class="font-bold">Pembagian untuk Modal</td><td class="text-right">${formatRupiah(totalAkhir)} : 12</td></tr>`);
+        detailTable.append(`<tr class="text-primary"><td class="font-bold">Modal per Pcs</td><td class="text-right font-bold">${formatRupiah(modal)}</td></tr>`);
+    }
+
     function showPercentageModal(total) {
         var percentageModal = document.getElementById('percentageModal');
         percentageModal.classList.add('modal-open');
@@ -102,8 +120,9 @@ $(document).ready(function () {
             if (!isNaN(percentage)) {
                 var increasedTotal = total * (1 + percentage / 100);
                 var hasilBagi = increasedTotal / 12;
-                $("#hasilBagi12").text(formatRupiah(hasilBagi));
                 $("#totalKeseluruhan").text(formatRupiah(increasedTotal));
+                $("#hasilBagi12").text(formatRupiah(hasilBagi));
+                updateDetailPerhitungan(total, percentage, increasedTotal, hasilBagi);
             }
             percentageModal.classList.remove('modal-open');
         });
@@ -111,9 +130,11 @@ $(document).ready(function () {
         $('#continueWithoutPercentage').click(function() {
             var hasilBagi = total / 12;
             $("#hasilBagi12").text(formatRupiah(hasilBagi));
+            updateDetailPerhitungan(total, 0, total, hasilBagi);
             percentageModal.classList.remove('modal-open');
         });
     }
+
 
     $("#resetDaftar").click(function () {
         daftarBarang = [];
